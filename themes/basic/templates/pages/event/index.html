@@ -1,0 +1,219 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+<div id="pagewrap" class="touch-unhover">
+
+
+
+
+<div id="content-wrap">
+    <div class="content clearfix" style="">
+        <div id="layout">
+            <!-- rowprofile: customer,prospect -->
+
+            <!-- rowprofile: customer,prospect -->
+            <div class="grid-row fullwidth">
+                <div class="grid-cell grid-100 cell-first cell-last width-100-only-scr3 width-100-max-scr2">
+
+                    <div class="cell-content gutter-bottom center"><h2 class="flush min-scr3 top-20 font-30">{{entry.banner.heading}}</h2>
+                      </div></div>
+            </div>
+            <!-- rowprofile: customer,prospect -->
+            <div class="grid-row bottom-20 fullwidth">
+                <div class="grid-cell grid-100 cell-first cell-last">
+                    <div class="cell-content gutter-bottom"><div class="min-scr3">
+                        <a href="{{entry.banner.link}}"><img class="flex" src="{{getAssetUrl(entry.banner.image)}}" alt="Watch Dreamforce anytime, anywhere, with Salesforce LIVE.">
+                        </a>
+                    </div>
+                </div>
+            <!-- rowprofile: customer,prospect -->
+            <div class="grid-row fullwidth left-5">
+                <div class="grid-cell grid-100 cell-first cell-last">
+
+                    <div class="cell-content"><div>
+
+                        <div class="clearfix" id="eventsLocal"><span class="font-22 right-10">{{entry.all_salesforce_events.event_region_title[0]}}</span>
+
+                            <ul id="filter">
+                                <li><a class="radius-15" data-toggle="portfilter" data-target="all"  value="ALL" href="#" >{{entry.all_salesforce_events.event_region_title[1]}}</a></li>
+                                <li><a class="radius-15" data-toggle="portfilter" data-target="US-Canada"  value="North America" href="#">{{entry.all_salesforce_events.event_region_title[2]}}</a></li>
+                                <li><a class="radius-15" data-toggle="portfilter" data-target="Europe"  value="EMEA" href="#">{{entry.all_salesforce_events.event_region_title[3]}}</a></li>
+                                <li><a class="radius-15" data-toggle="portfilter" data-target="Latin-America"  value="Latin America" href="#" >{{entry.all_salesforce_events.event_region_title[4]}}</a></li>
+                                <li><a class="radius-15" data-toggle="portfilter" data-target="Japan"  value="Japan" href="#">{{entry.all_salesforce_events.event_region_title[5]}}</a></li>
+                                <li><a class="radius-15" data-toggle="portfilter" data-target="Asia-Pacific" value="APAC" href="#">{{entry.all_salesforce_events.event_region_title[6]}}</a></li>
+                                <li><a class="radius-15 selected"  data-toggle="portfilter" data-target="Australia-New Zealand" value="Australia" href="#">{{entry.all_salesforce_events.event_region_title[7]}}</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="clearfix" id="moreEvents">
+                            <div class="training-list">
+                            {% for event in entry.all_salesforce_events.events_details %}
+                            {% for region in event.location %}
+
+                                {% if region.title == entry.all_salesforce_events.event_region_title[2] %}
+                                <div data-tag='US-Canada'>
+                                <a class="block left width-100"  href="#">
+                <span class="eventInner block clearfix">
+                    <span class="date left">{{event.start_date}}</span> <span class="date left"> {{event.end_date}} </span>
+                    <span class="titleLocal left">
+                        <span class="title">{{event.event}}<span class="openReg"></span></span>
+                        <span class="location">{{ event.event_type }}</span></span></span>
+                                </a>
+                                </div>
+                                {% endif %}
+                                {% if region.title == entry.all_salesforce_events.event_region_title[3] %}
+                                <div data-tag='Europe'>
+                                <a class="block left width-100" href="http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4" onclick="s_objectID=&quot;http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4_1&quot;;return this.s_oc?this.s_oc(e):true">
+                <span class="eventInner block clearfix">
+                    <span class="date left">8 Nov, 2016</span>
+                    <span class="titleLocal left">
+                        <span class="title">Small Business Advantage Breakfast<span class="openReg"></span></span>
+                        <span class="location">Perth, Australia</span></span></span>
+                                </a>
+                                   </div>
+                                {% endif %}
+                                {% if region.title == entry.all_salesforce_events.event_region_title[4] %}
+                                <div data-tag='Latin-America'>
+                                <a class="block left width-100" data-tag='Latin-America'  href="http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4" onclick="s_objectID=&quot;http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4_1&quot;;return this.s_oc?this.s_oc(e):true">
+                <span class="eventInner block clearfix">
+                    <span class="date left">8 Nov, 2016</span>
+                    <span class="titleLocal left">
+                        <span class="title">Small Business Advantage Breakfast<span class="openReg"></span></span>
+                        <span class="location">Perth, Australia</span></span></span>
+                                </a>
+                                </div>
+                                {% endif %}
+                                {% if region.title == entry.all_salesforce_events.event_region_title[5] %}
+                                <div data-tag='Japan'>
+                                <a class="block left width-100" data-tag='Japan' href="http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4" onclick="s_objectID=&quot;http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4_1&quot;;return this.s_oc?this.s_oc(e):true">
+                <span class="eventInner block clearfix">
+                    <span class="date left">8 Nov, 2016</span>
+                    <span class="titleLocal left">
+                        <span class="title">Small Business Advantage Breakfast<span class="openReg"></span></span>
+                        <span class="location">Perth, Australia</span></span></span>
+                                </a>
+                                </div>
+                                {% endif %}
+                                {% if region.title == entry.all_salesforce_events.event_region_title[6] %}
+                                <div data-tag='Asia-Pacific'>
+                                    <a class="block left width-100" href="http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4" onclick="s_objectID=&quot;http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4_1&quot;;return this.s_oc?this.s_oc(e):true">
+                <span class="eventInner block clearfix">
+                    <span class="date left">8 Nov, 2016</span>
+                    <span class="titleLocal left">
+                        <span class="title">Small Business Advantage Breakfast<span class="openReg"></span></span>
+                        <span class="location">Perth, Australia</span></span></span>
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {% if region.title == entry.all_salesforce_events.event_region_title[7] %}
+                                <div data-tag='Australia-New Zealand'>
+                                    <a class="block left width-100" data-tag='Latin-America'  href="http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4" onclick="s_objectID=&quot;http://www.salesforce.com/au/events/details/small-business-advantage-breakfast-perth-17q4_1&quot;;return this.s_oc?this.s_oc(e):true">
+                <span class="eventInner block clearfix">
+                    <span class="date left">8 Nov, 2016</span>
+                    <span class="titleLocal left">
+                        <span class="title">Small Business Advantage Breakfast<span class="openReg"></span></span>
+                        <span class="location">Perth, Australia</span></span></span>
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endfor %}
+                              </div>
+
+                        </div>
+                    </div> <!-- /#content -->
+
+
+
+                    </div></div>
+            </div>
+            <!-- rowprofile: customer,prospect -->
+            <div class="grid-row fullwidth margin-bottom-10 left-5">
+                <div class="grid-cell grid-60 cell-first width-100-max-scr2">
+                    <div class="cell-content gutter-right gutter-bottom right-20-min-scr3 top-30">
+                        <div class="quotation font-22 right-20-min-scr3"><span>"Salesforce.com events are a great way to meet and learn from other Salesforce enthusiasts. I left with tips and tricks that I can’t wait to try out."</span>
+                            <span class="block text-right font-17">- Robin Jones, Reliable Reports</span></div>
+                        <div class="quotation font-22 top-20 right-20-min-scr3"><span>"Dreamforce (#DF12) Emerges As The South By Southwest (#SXSW) For The Enterprise"</span> 	<span class="block text-right font-17">- R "Ray" Wang, <a target="_blank" href="#"</a></span></div>
+                    </div>
+                </div>
+                <div class="grid-cell grid-40 cell-last width-100-max-scr2">
+                    <div class="cell-content"><div class="left clearfix width-100">
+                        <h3 class="left font-22 margin-bottom-10">Flickr Event Photos</h3>
+                        <a target="_blank" href="http://www.flickr.com/photos/salesforce/" class="right font-12 top-5 right-5">View More &gt;</a></div>
+                        <div class="clearfix" id="#flickr_badge_uber_wrapper">
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="flickr_badge_image left gutter-right" id="flickr_badge_image1">
+                                <a href="">
+                                    <img src="http://farm6.staticflickr.com/5777/29915650554_a8ce3a9b1d_s.jpg" alt="A photo on Flickr" title="df16 d12016-10-05_18-23-04_1-2" height="75" width="75">
+                                </a>
+                            </div>
+
+                            <span style="position:absolute;left:-999em;top:-999em;visibility:hidden" class="flickr_badge_beacon"><img src="http://geo.yahoo.com/p?s=792600102&amp;t=b433daf4ce5fe62136da7d13e462d48b&amp;r=http%3A%2F%2Fwww.salesforce.com%2Fin%2Fevents%2F&amp;fl_ev=0&amp;lang=en&amp;intl=in" width="0" height="0" alt=""></span>
+
+                        </div></div></div>
+            </div>
+            <!-- rowprofile: customer,prospect -->
+            <div class="grid-row grid-row-last fullwidth margin-top-10">
+                <div class="grid-cell grid-33 cell-first width-100-max-scr2">
+
+                    <div class="cell-content"><h3 class="font-22 margin-bottom-10">Recent Event Videos</h3>
+                        <p class="font-gray-2">Check out highlights of our latest events and discover how to connect to your customers in a whole new way.</p>
+                        <p><a target="_blank" href="http://www.youtube.com/user/SalesforceEvents" onclick="s_objectID=&quot;http://www.youtube.com/user/SalesforceEvents_1&quot;;return this.s_oc?this.s_oc(e):true">View more &gt;</a></p></div></div>
+                <div class="grid-cell grid-34 width-50-only-scr2 width-100-only-scr1">
+                    <div class="cell-content gutter-left gutter-right gutter-bottom">
+                        <div><a target="_blank" href="https://www.youtube.com/playlist?list=PLnobS_RgN7Jbmz_NjUTa29FgLWpJ1MWVZ" onclick="s_objectID=&quot;https://www.youtube.com/playlist?list=PLnobS_RgN7Jbmz_NjUTa29FgLWpJ1MWVZ_1&quot;;return this.s_oc?this.s_oc(e):true"><img class="flex" src="http://www2.sfdcstatic.com/au/assets/images/events/events_df14_keynote.jpg" alt=""></a>
+                        </div>
+                        <p class="font-13 font-blue"><a target="_blank" href="hhttps://www.youtube.com/playlist?list=PLnobS_RgN7Jbmz_NjUTa29FgLWpJ1MWVZ" onclick="s_objectID=&quot;hhttps://www.youtube.com/playlist?list=PLnobS_RgN7Jbmz_NjUTa29FgLWpJ1MWVZ_1&quot;;return this.s_oc?this.s_oc(e):true">Dreamforce '14 Opening Keynote: Welcome to the Customer Success Platform</a></p></div></div>
+                <div class="grid-cell grid-33 cell-last width-50-only-scr2 width-100-only-scr1">
+
+                    <div class="cell-content gutter-left gutter-bottom gutter-right"><div><a target="_blank" href="https://www.youtube.com/user/salesforce/playlists?shelf_id=18&amp;sort=dd&amp;view=50" onclick="s_objectID=&quot;https://www.youtube.com/user/salesforce/playlists?shelf_id=18&amp;sort=dd&amp;view=50_1&quot;;return this.s_oc?this.s_oc(e):true"><img class="flex" src="http://www2.sfdcstatic.com/au/assets/images/events/events_df14_prod_keynote.jpg" alt=""></a></div>
+                        <p class="font-13 font-blue"><a target="_blank" href="https://www.youtube.com/user/salesforce/playlists?shelf_id=18&amp;sort=dd&amp;view=50" onclick="s_objectID=&quot;https://www.youtube.com/user/salesforce/playlists?shelf_id=18&amp;sort=dd&amp;view=50_2&quot;;return this.s_oc?this.s_oc(e):true">Dreamforce 2014 Keynotes, Breakout Sessions and Studio Shows</a></p></div></div>
+            </div>
+
+        </div>
+
+
+
+    </div><!-- "content" -->
+</div><!-- #content-wrap -->
+
+
+</div>
+
+
+{% endblock %}

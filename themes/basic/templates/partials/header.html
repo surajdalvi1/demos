@@ -1,0 +1,75 @@
+{# If you have a "Content Type" for header in Built.io Contentstack then use get() view helper to retrieve header entry. #}
+{# e.g. set header = get("header_content_type_id") #}
+{# And then render header values using the {{header.field_name}} #}
+
+
+{% set header = get("header") %}
+
+<div id="header" class="clearfix ">
+    <div class="logo-wrap fullwidth">
+        <h1 id="main-logo">
+            <a href="#" title="Salesforce"><img class="logo" src="{{getAssetUrl(header.logo.image)}}"></a>
+        </h1>
+        <div id="header-nav" class="clearfix">
+            <div id="header-nav-container" class="header-nav-container">
+                <ul class="header-nav-list first">
+                    <li>
+                        <h4 class="contact" id="qe_form_contact">{{header.phone_number}}<span class="min-480">&nbsp;|&nbsp;<a class="qe_form_headercontact" href="#">{{header.contact.title}}</a></span></h4>
+                    </li>
+                    <li>
+                        <div class="search-container">
+                            <form action="https://www.salesforce.com/in/site-search.jsp" method="get" name="cse-search-box" id="cse-search-box">
+                                <input type="hidden" name="cx" value="007946504037312675699:wd0zmrbwlyq">
+                                <input type="hidden" name="cof" value="FORID:11;NB:1">
+                                <input id="searchtext" type="text" class="text" name="q" maxlength="100" value="Search" dir="ltr" autocomplete="off" spellcheck="false" style="outline: none;">
+                                <input id="search-submit" type="image" src="{{getAssetUrl(header.search.image)}}" value="Search">
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <ul id="lang-select" class="header-nav-list second">
+                    <li>
+                        <a rel="nofollow" class="btn qe_login radius-flat-all bg-gradient-graphite center" id="button-login" href="#">{{header.call_to_action[0].title}}</a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" class="qe_form_signup btn radius-flat-all center bg-gradient-green" id="free-trial-trigger" href="#">{{header.call_to_action[1].title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- navigation-desktop -->
+    <div id="nav" class="challenger-a clearfix" style="left: 0px; height: auto;">
+        <ul class="horizontal" style="left: 0px;">
+
+            {% for menu in header.menu %}
+            <li class="menu-solutions">
+              <span class="lwrap">
+                <span class="rwrap">
+                  <span class="wrap">
+                    <a href="#">{{menu.heading}}</a>
+                  </span>
+                </span>
+                </span>
+                {% for submenu in menu.sub_menu  %}
+                <ul class="clearfix">
+                    <li>
+                        <ul class="vertical">
+                            {% for submenu_link in submenu.link  %}
+                            <li class="menu-plans">
+                                <a href="#">
+                                    <span class="title">{{submenu_link.title}}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                {% endfor %}
+             </li>
+            {% endfor %}
+             </ul>
+    </div>
+
+</div>

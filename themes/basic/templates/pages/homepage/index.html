@@ -1,0 +1,149 @@
+
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+<!-- banner start here -->
+<div class="grid-row flex-full-100 flush-all show-min-scr3 tcat-banner au-banner">
+<div class="grid-cell grid-100 cell-first cell-last">
+        <div class="cell-content gutter-bottom flush-all">
+            <div class="tcat-inner row-wrap top-60 bottom-60">
+                <div class="grid-row">
+                    <div class="grid-cell grid-70 cell-last center">
+                        <div class="cell-content left-20-only-scr3">
+                            <div class="right-20-only-scr3 right-20-only-scr4">
+                                <h1 class="font-48 margin-bottom-10 lineheight-125 min-scr4 font-white ">{{entry.hero_unit.heading}}</h1>
+                               <!-- <h1 class="font-35 margin-bottom-10 lineheight-125 max-scr3 font-white ">Sell, Market, and  Service with the  world's #1 CRM.</h1>-->
+                                <h2 class="sub font-white top-10">{{entry.hero_unit.sub_heading}}</h2>
+                                {% set entry_hero_unit_call_to_action = entry.hero_unit.call_to_action %}
+                                <div class="bottom-20">
+                                    {% for _entry_hero_unit_call_to_action in entry_hero_unit_call_to_action -%}
+                                    <a href="{{ _entry_hero_unit_call_to_action.href }}" id="watch-link-btn" {% if  _entry_hero_unit_call_to_action.title == "WATCH DEMOS" %}  class="cta-white" {% else %} class="btn cta-green margin-left-20 {% endif %} target="_blank">  {{_entry_hero_unit_call_to_action.title}}</a>
+                                   <!-- <a href="#" id="watch-link-btn" class="btn cta-green margin-left-20" target="_blank">Free Trial</a></div>-->
+                                    {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- bannr end here -->
+
+<!-- conten section start here -->
+<div class="grid-row bg-gray-a1 show-min-scr3">
+    <div class="row-wrap bottom-40">
+        <div class="grid-row grid-cell grid-100 cell-first cell-last">
+            <div class="cell-content left-20">
+                <h2 class="font-family-salesforce-bold font-22 flush bottom-5 font-family-salesforce-bold">{{entry.products.heading}}</h2>
+                <p class="font-family-salesforce flush font-15 bottom-20">{{entry.products.abstract}}</p>
+            </div>
+        </div>
+    </div>
+
+  <!-- start ------------------------------------------------------------------->
+
+      <div class="grid-row row-wrap bottom-10 products-desktop equalize-children">
+        {% set entry_products_list_of_products = entry.products.list_of_products %}
+          {% for _entry_products_list_of_products in entry_products_list_of_products %}
+        <div class="grid-cell grid-25 cell-first center product">
+            <div class="cell-content gutter-right gutter-bottom">
+                {% if _entry_products_list_of_products.name != "See all product" %}
+                <div class="miniProducts animation_Up rel">
+                    <span class="product-med sales-icon" ><img src="{{getAssetUrl(_entry_products_list_of_products.logo)}}"></span>
+                    <div class="equalize-group-prod top-15 bottom-10" style="height: 91px;">
+                        <h3 class="font-family-salesforce-bold font-20">{{_entry_products_list_of_products.name}}</h3>
+                        <p>{{_entry_products_list_of_products.abstract}}</p>
+                    </div>
+
+                    {% set _entry_products_list_of_products_watch_demo_cta = _entry_products_list_of_products.primary_call_to_action %}
+                    {% set _entry_products_list_of_products_learn_more_cta = _entry_products_list_of_products.secondary_call_to_action %}
+
+
+                    <div class="top-15">
+                        <a href="{{ _entry_products_list_of_products_watch_demo_cta.href }}" target="_blank" class="btn cta-blue flex" >{{_entry_products_list_of_products_watch_demo_cta.title}}</a>
+                        <a href="{{_entry_products_list_of_products_learn_more_cta.href }}"  class="link-arrow">{{_entry_products_list_of_products_learn_more_cta.title}}</a>
+                    </div>
+
+                </div>
+                {% else%}
+                    <div class="seeAll animation_Up rel">
+                            <div class="equalize-group-prod" style="height: 155px;">
+                                <h2 class="font-family-salesforce-thin color-link">{{_entry_products_list_of_products.name}}</h2>
+                            </div>
+                          <a class="link-cover flush" href="">&nbsp;</a></div>
+                 {% endif %}
+
+
+            </div>
+        </div>
+          {% endfor %}
+
+    </div>
+
+    <!-- End ------------------------------------------------------------------->
+</div>
+
+<!-- conten section end here -->
+
+<!-- conten section 2 start here -->
+
+<div class="grid-row grid-row-last resource-links  show-min-scr3">
+    <div class="grid-cell grid-100 cell-first cell-last tcat-inner">
+        <div class="cell-content gutter-bottom">
+            <div class="grid-row grid-row-last row-wrap">
+                <div class="grid-cell grid-20 cell-first">
+                    <div class="cell-content gutter-bottom left-20"><img src="{{getAssetUrl(entry.resource_links.logo)}}" alt="sfdc-home-footer-logo"></div>
+                </div>
+                {% set _entry_resource_links_links = entry.resource_links.links %}
+                {% for _entry_resource_links_links in entry.resource_links.links %}
+                <div class="grid-cell grid-20">
+
+                    <div class="cell-content gutter-right gutter-bottom">
+
+                        <h3>{{_entry_resource_links_links.heading}}</h3>
+                        {% set entry_resource_links_links_link = _entry_resource_links_links.link %}
+
+                        <ul>
+                            {% for _entry_resource_links_links in entry_resource_links_links_link %}
+                                <li><a href='{{_entry_resource_links_links.href}}'>{{_entry_resource_links_links.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- conten section 2 start here -->
+
+<div id="footer-content" class="clearfix">
+    <div class="fullwidth">
+        <div class="grid-row grid-row-first slide flex-active-slide" style="width: 990px; float: left; display: block;">
+            <div class="grid-cell grid-100 cell-first cell-last">
+                <div class="flexslider">
+                    <ul class="slides">
+                        {% set entry_company_details = entry.footer_content %}
+                        {% for _entry_company_details in entry_company_details %}
+                        <li class="cell-content">
+                            <h1>{{_entry_company_details.heading}}</h1>
+                            {{_entry_company_details.abstract}}
+                            <div class="text-right">
+                                <a class="readmore" href="{{_entry_company_details.call_to_action.href}}">{{_entry_company_details.call_to_action.title}}</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

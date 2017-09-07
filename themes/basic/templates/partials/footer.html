@@ -1,0 +1,83 @@
+{# If you have a "Content Type" for footer in Built.io Contentstack then use get() view helper to retrieve footer entry. #}
+{# e.g. set footer = get("footer_content_type_id") #}
+{# And then render footer values using the {{footer.field_name}} #}
+
+{% set footer = get("footer") %}
+
+<!-- Footer section start here -->
+
+
+<div id="footer">
+    <div class="gutter-tb">
+        <div id="footer-foot" class="clearfix">
+            <div id="footer-contact" class="fullwidth clearfix">
+                <div id="contact-info-container" class="grid-67">
+                    <ul class="footer-contact horizontal clearfix top-10">
+                        <li class="">{{ footer.phone_number }}</li>
+                        {% for footerlink in footer.call_to_action  %}
+                        <li class="delim">|</li>
+                        <li class=""><a href="#" target="_blank">{{ footerlink.title }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+                <div class="grid-33" id="social-sharing-container">
+                    <div id="social-sharing-icons" class="clearfix">
+                        <div class="social-icons follow-icons clearfix right bw" sfdc:type="social-sharing">
+                            <a href="{{follow_us.link}}" title="Follow us on Facebook" target="_blank"><span class="social facebook left">&nbsp;</span></a>
+                            <a href="#" title="Follow us on Twitter" target="_blank"><span class="social twitter left">&nbsp;</span></a>
+                            <a href="#" title="Check us out on LinkedIn" target="_blank"><span class="social linkedin left"></span></a>
+                            <a href="#" title="Follow us on Google+" target="_blank"><span class="social googleplus left"></span></a>
+                            <a href="#" title="Visit our Channel on YouTube" target="_blank"><span class="social youtube left"></span></a>
+                            <a href="#" title="Subscribe via RSS" target="_blank"><span class="social blog left"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer-links" class="fullwidth">
+                <div class="grid-67 width-100-max-scr2">
+                    <div id="copyright" class="clearfix">{{ footer.copy_rights}}</div>
+                    <div id="legal-address" class="clearfix">&nbsp;</div>
+                    <div class="links clearfix">
+                        <ul class="horizontal clearfix">
+                            <li><a rel="nofollow" class="qe_privacy" href="#">{{ footer.links[0].title}}</a></li>
+                            <li class="delim">|</li>
+                            <li><a href="#">{{ footer.links[1].title}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid-33 width-100-max-scr2">
+                    <div class="right-min-scr3 clearfix">
+                        <div id="region-area" class="right-15 top-10 relative">
+                            <div id="region-dropdown" class="clearfix">
+                                <div id="region-globe" class="inline-block valign-bottom">&nbsp;</div><div class="inline-block left-10 "><a class="font-14">{{footer.select_region.title}}</a></div>
+                            </div>
+                            <div id="region-panel" class="absolute bg-white border-all gutter-all">
+                                <div id="region-tri" class="absolute">&nbsp;</div>
+                                <div id="region-panel-inner">
+                                    <div class="grid-row">
+                                        {% for selectregion in footer.select_region.menu %}
+                                        <div class="grid-cell grid-30 width-100-max-scr2 cell-first">
+                                            <div class="cell-content gutter-all-20 flush-all-max-scr2">
+                                                <div class="font-16 font-gray top-20-max-scr2">{{ selectregion.title }}</div>
+                                                <ul class="vertical">
+                                                     {% for submenu in selectregion.sub_menu %}
+                                                        <li class="top-10"><a class="region-option font-14" href="{{submenu.url}}">{{submenu.title}}</a></li>
+                                                     {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer section  end here -->
