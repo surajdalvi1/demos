@@ -20,7 +20,9 @@ module.exports = function Developers() {
             try{
                 res.set({
                     'content-disposition': 'inline;  filename=sample-image.jpg',
-                    'name':'testing'
+                    'name':'testing',
+                    'last':'ravan',
+                    'content-name':'image/png'
                 })
                res.send("Hello")
 
