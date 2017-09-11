@@ -24,7 +24,7 @@ module.exports = function Developers() {
                     'last':'ravan',
                     'content-name':'image/png'
                 })
-               res.send("Hello")
+               res.send("Hello User")
 
             } catch(err) {
                 next(err);
