@@ -19,12 +19,12 @@ module.exports = function Developers() {
         app.get('/test',function(req, res, next){
             try{
                 res.set({
-                    'content-disposition': 'inline;  filename=sample-image.jpg',
+                    'content-disposition': 'inline; filename=owl%20pic.jpg',
                     'name':'testing',
                     'last':'ravan',
-                    'content-name':'image/png'
+                    'content-name':'image/gif'
                 })
-               res.send("Hello User")
+               res.send("Hello User Demo")
 
             } catch(err) {
                 next(err);
